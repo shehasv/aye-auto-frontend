@@ -1,3 +1,6 @@
+.logo{
+    display: none;
+}
 .main-container{
     display: flex;
     flex-direction: row;
@@ -16,12 +19,14 @@
         width: 35%;
         display: flex;
         align-items: center;
+        flex-direction: column;
         .form-box{
+            margin-top: 25%;
             h2{
                 margin-top: 5%;
                 text-align: center;
             }
-            margin-left: 25%;
+            margin-left: 0%;
             height: 450px;
             width: 60%;
             background-color: white;
@@ -51,5 +56,49 @@
              }
             }
         }
+        .social{
+            width: 50%;
+            margin-left: 15%;
+            margin-top: 20%;
+            i{
+                margin-right: 10%;
+                &:hover{
+                    color: #ffb532;
+                }
+                
+            }
+        }
     }
+}
+
+@media all and(max-width:650px){
+    .main-container{
+        margin-top: 0%;
+        display: block;
+        .image-container{
+            display: none;
+        }
+        .form-container{
+            display: block;
+            width: 95%;
+            margin-left: 8%;
+            .form-box{
+                margin: 0%;
+                border-radius: 3%;
+                width: 90%;
+            }
+            .social{
+                margin-left: 20%;
+                display: block;
+                width: 60%;
+            }
+            
+        }
+        
+    }
+    .logo{
+        margin-left: 30%;
+        display: block;
+    }
+    
 }
