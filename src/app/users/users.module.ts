@@ -8,6 +8,7 @@ import { HomeComponent } from './components/home/home.component';
 import {ReactiveFormsModule} from '@angular/forms'
 import {HttpClientModule} from '@angular/common/http';
 import { SignupComponent } from './components/signup/signup.component'
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
 
 @NgModule({
   declarations: [UsersComponent, LoginComponent, HomeComponent, SignupComponent],
@@ -15,7 +16,8 @@ import { SignupComponent } from './components/signup/signup.component'
     CommonModule,
     UsersRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatButtonToggleModule
   ]
 })
 export class UsersModule { }

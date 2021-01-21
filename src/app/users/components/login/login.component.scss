@@ -24,7 +24,7 @@
         display: flex;
         align-items: center;
         flex-direction: column;
-        margin-top: 5%;
+        margin-top: 4%;
         .form-box{
             border-radius: 3%;
             h2{
@@ -32,8 +32,8 @@
                 text-align: center;
             }
             margin-left: 0%;
-            height: 535px;
-            width: 60%;
+            height: 560px;
+            width: 65%;
             background-color: white;
             box-shadow: 2px 5px 10px 5px #9b9797;
             .form{
@@ -42,6 +42,19 @@
              h6{
                  margin-top: 5%;
                  text-align: center;
+             }
+             mat-button-toggle-group{
+                 margin-top: 5%;
+                display: flex;
+                justify-content: center;
+                mat-button-toggle{
+                    width: 100%;
+                    
+                }
+                .mat-button-toggle-checked {
+                    background-color: rgb(56, 56, 42);
+                    color: #ffc832;
+                }
              }
              .buttons{
                  display: flex;

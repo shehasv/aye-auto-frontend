@@ -12,7 +12,16 @@ export class LoginComponent implements OnInit {
 
   constructor(private fb:FormBuilder, private loginService:LoginService, private route:Router) { }
 
+  public selectedVal: string;
   ngOnInit(): void {
+
+  this.selectedVal ='customer';
+
+  }
+
+  
+  public onValChange(val: string) {
+    this.selectedVal = val;
   }
 
   get email(){
@@ -28,6 +37,7 @@ export class LoginComponent implements OnInit {
     email: ['',[Validators.required,Validators.email]],
     password : ['',[Validators.required]]
   })
+  
 
 
   public wrongPass: boolean = false;
@@ -35,7 +45,8 @@ export class LoginComponent implements OnInit {
   public clciked:boolean = false
 
   login(){
-    this.clciked = true;
+    if(this.selectedVal === "customer"){
+      this.clciked = true;
     console.log(this.loginForm.value)
     this.loginService.login(this.loginForm.value)
       .subscribe((response)=>{
@@ -71,6 +82,45 @@ export class LoginComponent implements OnInit {
         console.log('error occured', error);
         this.loginForm.reset();
       })
+    }
+    else{
+      this.clciked = true;
+      console.log(this.loginForm.value)
+      this.loginService.vehicleLogin(this.loginForm.value)
+        .subscribe((response)=>{
+          console.log(response)
+          if(response){
+            this.clciked = false
+          }
+          if (response.msg === 'failed') {
+            this.loginForm.patchValue({
+              email: this.loginForm.get('email').value,
+              password: '',
+            });
+            this.wrongPass = true;
+            setTimeout(()=>{
+              this.wrongPass = false
+            },4000)
+          }
+  
+          else if (response.msg === 'success'){
+            sessionStorage.setItem('id',response.id)
+            this.route.navigate(['/vehicle']);
+  
+          }
+          else{
+            this.failed = true
+            setTimeout(()=>{
+              this.failed = false
+            },4000)
+            this.loginForm.reset();
+          }
+  
+        },(error) => {
+          console.log('error occured', error);
+          this.loginForm.reset();
+        })
+    }
   }
 
 }

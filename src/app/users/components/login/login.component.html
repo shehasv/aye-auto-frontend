@@ -19,7 +19,7 @@
                 <form [formGroup]="loginForm" (ngSubmit)="login()">
                     <div class="form-group" >
                         <label>Email</label>
-                        <input [class.is-invalid]="email.invalid && email.touched" type="text" class="form-control" formControlName="email">
+                        <input [class.is-invalid]="email.invalid && email.touched" placeholder="someone@example.com" type="text" class="form-control" formControlName="email">
                         <div *ngIf="email.invalid && email.touched">
                             <small *ngIf="email.errors?.required" class="text-danger">Email is required</small>
                             <small *ngIf="email.errors?.email" class="text-danger">Enter valid email id</small>
@@ -35,6 +35,12 @@
                     <div>
                         <a>forgot password?</a>
                     </div>
+
+                    <mat-button-toggle-group appearance="legacy" #group="matButtonToggleGroup" [value]="selectedVal" (change)="onValChange(group.value)">
+                        <mat-button-toggle value="customer">Customer</mat-button-toggle>
+                        <mat-button-toggle value="vehicle">Vehicle</mat-button-toggle>
+                      </mat-button-toggle-group>
+
                     <div class="buttons">
                         <button [disabled]="!loginForm.valid" *ngIf="!clciked" class="btn btn-warning lg-btn">Login</button>
                         <button *ngIf="clciked" class="btn btn-warning lg-btn">
