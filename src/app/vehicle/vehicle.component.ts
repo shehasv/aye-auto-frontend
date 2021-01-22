@@ -34,7 +34,7 @@ export class VehicleComponent implements OnInit {
   }
   
   ngOnInit() {
-    this.selectedVal ='not-available';
+    this.selectedVal ='free';
     this.chnageStatus();
     if(navigator.geolocation){
       navigator.geolocation.getCurrentPosition((position)=>{
@@ -66,10 +66,10 @@ export class VehicleComponent implements OnInit {
 
     }
 
-    // setInterval(()=>{
-    //   console.log('retry')
-    //   this.updatePosition()
-    // },30000)
+    setInterval(()=>{
+      console.log('retry')
+      this.updatePosition()
+    },300000)
 
   }
 
@@ -93,6 +93,14 @@ export class VehicleComponent implements OnInit {
       console.log(res)
     })
 
+  }
+
+  ngOnDestroy() {
+    console.log('close')
+    this.vehcileService.updateStatus(sessionStorage.getItem('id'),'not-available')
+    .subscribe((res)=>{
+      console.log(res)
+    })
   }
   
 

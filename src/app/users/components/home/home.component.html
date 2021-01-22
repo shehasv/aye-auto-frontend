@@ -1,5 +1,40 @@
 <div class="place">
-    <h5><i class="fa fa-map-marker"></i>{{place}} <button class="btn btn-link">refresh</button></h5>
+    <h5><i class="fa fa-map-marker"></i>{{place}} <button (click)="refresh()" class="btn btn-link">refresh</button></h5>
 </div>
 <div class="map" id="map" class="match-parent"></div>
 
+
+<div>
+    <div
+      [style.display]="showModal ? 'block' : 'none'"
+      class="modal"
+      id="imagemodal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="myModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="myModalLabel">Vehicle Details</h4>
+            <button
+              type="button"
+              class="close"
+              aria-label="Close"
+              (click)="hide()"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="login-container">
+            <!-- <h3>{{vehicleDetails.name}}</h3> -->
+            <!-- <h4>{{vehicleDetails.vehicleNumber}}</h4> -->
+            <!-- <p><a href="tel:{{vehicleDetails.phone}}">Call</a></p> -->
+          </div>
+          <div class="modal-footer">
+              <button class="btn btn-warning" (click)="hide()">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>

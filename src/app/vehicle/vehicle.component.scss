@@ -17,6 +17,10 @@
   }
 
   mat-button-toggle-group{
-      margin-left: 15%;
+      margin-left: 10%;
       margin-top: 10%;
+      .mat-button-toggle-checked {
+        background-color: rgb(56, 56, 42);
+        color: #ffc832;
+    }
   }
