@@ -74,25 +74,7 @@ export class VehicleComponent implements OnInit {
   }
 
   updatePosition(){
-    navigator.geolocation.getCurrentPosition((position)=>{
-      this.lat = position.coords.latitude;
-      this.lng = position.coords.longitude;
-    })
-    fetch("https://us1.locationiq.com/v1/reverse.php?key=pk.31dd831e4ece2354f094c88dc5f56d3e&lat=" + 
-        this.lat + "&lon=" + this.lng + "&format=json")
-      .then(response => response.json())
-      .then(data => {
-        this.place = data.display_name.split(',')[0];
-    })
-    var el = document.createElement('img');
-        el.setAttribute('src','../../../../assets/marker.png')
-        el.setAttribute('width',"60px")
-        new mapboxgl.Marker(el).setLngLat([this.lng, this.lat]).addTo(this.map).setPopup(new mapboxgl.Popup().setHTML("<h6>You are here!</h6>"));
-    this.vehcileService.updatePosition(sessionStorage.getItem('id'),this.lat,this.lng)
-    .subscribe((res)=>{
-      console.log(res)
-    })
-
+    window.location.reload();
   }
 
   ngOnDestroy() {
