@@ -13,6 +13,7 @@ export class HomeComponent implements OnInit {
   style = 'mapbox://styles/mapbox/streets-v11';
   lat;
   lng;
+  place:string;
   constructor() { 
     
   }
@@ -28,11 +29,23 @@ export class HomeComponent implements OnInit {
         zoom: 15,
         center: [this.lng, this.lat]
         });
+        fetch("https://us1.locationiq.com/v1/reverse.php?key=pk.31dd831e4ece2354f094c88dc5f56d3e&lat=" + 
+        this.lat + "&lon=" + this.lng + "&format=json")
+      .then(response => response.json())
+      .then(data => {
+        this.place = data.display_name.split(',')[0];
+      })
+      
         // Add map controls
         this.map.addControl(new mapboxgl.NavigationControl());
-        new mapboxgl.Marker({color:'#000000'}).setLngLat([this.lng, this.lat]).addTo(this.map).setPopup(new mapboxgl.Popup().setHTML("<h3>You are here!</h3>"));
+        new mapboxgl.Marker({color:'#000000'}).setLngLat([this.lng, this.lat]).addTo(this.map).setPopup(new mapboxgl.Popup().setHTML("<h6>You are here!</h6>"));
       },error => console.log(error),{enableHighAccuracy: true,timeout: 5000,
-        maximumAge: 0});
+        maximumAge: 0
+      });
+      
+      
+        
+
     }
       
     
