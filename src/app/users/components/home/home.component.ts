@@ -1,6 +1,7 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import * as mapboxgl from 'mapbox-gl';
 import { environment } from '../../../../environments/environment';
+import { VehicleService } from '../../services/vehicle.service';
 
 @Component({
   selector: 'app-home',
@@ -14,7 +15,7 @@ export class HomeComponent implements OnInit {
   lat;
   lng;
   place:string;
-  constructor() { 
+  constructor(private vehcileService:VehicleService) { 
     
   }
   ngOnInit() {
@@ -37,7 +38,7 @@ export class HomeComponent implements OnInit {
       })
       
         // Add map controls
-        this.map.addControl(new mapboxgl.NavigationControl());
+        this.map.addControl(new mapboxgl.NavigationControl({showZoom:true}));
         new mapboxgl.Marker({color:'#000000'}).setLngLat([this.lng, this.lat]).addTo(this.map).setPopup(new mapboxgl.Popup().setHTML("<h6>You are here!</h6>"));
       },error => console.log(error),{enableHighAccuracy: true,timeout: 5000,
         maximumAge: 0
@@ -47,7 +48,29 @@ export class HomeComponent implements OnInit {
         
 
     }
-      
-    
+    this.getVehicleDetails();
+    // setInterval(()=>{
+    //   this.getVehicleDetails()
+    // },100000)
+  }
+  name:string
+  el = document.createElement('img');
+  getVehicleDetails(){
+    console.log("refresh")
+    this.el.setAttribute('src','../../../../assets/marker.png')
+    this.el.setAttribute('width',"60px")
+    this.vehcileService.getVehicleDetails()
+    .subscribe(res =>{
+      res.forEach(element =>{
+        let marker = new mapboxgl.Marker(this.el)
+        .setLngLat([element.positionLng, element.positionLat])
+        .addTo(this.map)
+        .setPopup(new mapboxgl.Popup()
+        .setHTML("<ng-template>{{element.name}}</ng-template>"));
+        // setTimeout(()=>{
+        //   marker.remove();
+        // },100000)
+      })
+    })
   }
 }
