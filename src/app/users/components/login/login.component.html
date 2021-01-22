@@ -39,7 +39,7 @@
                     <mat-button-toggle-group appearance="legacy" #group="matButtonToggleGroup" [value]="selectedVal" (change)="onValChange(group.value)">
                         <mat-button-toggle value="customer">Customer</mat-button-toggle>
                         <mat-button-toggle value="vehicle">Vehicle</mat-button-toggle>
-                      </mat-button-toggle-group>
+                    </mat-button-toggle-group>
 
                     <div class="buttons">
                         <button [disabled]="!loginForm.valid" *ngIf="!clciked" class="btn btn-warning lg-btn">Login</button>

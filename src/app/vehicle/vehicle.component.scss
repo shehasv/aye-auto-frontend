@@ -1,0 +1,22 @@
+.match-parent {
+    border-radius: 2%;
+    margin-left: 5%;
+    width: 90%;
+    height: 65%;
+  }
+  .place{
+        margin-top: 2%;
+      h5{
+          i{
+              margin-right: 2%;
+              color: #ffb532;
+          }
+          text-transform: lowercase;
+      }
+      margin-left: 5%;
+  }
+
+  mat-button-toggle-group{
+      margin-left: 15%;
+      margin-top: 10%;
+  }

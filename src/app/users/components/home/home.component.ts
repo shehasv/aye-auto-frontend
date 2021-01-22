@@ -49,28 +49,39 @@ export class HomeComponent implements OnInit {
 
     }
     this.getVehicleDetails();
-    // setInterval(()=>{
-    //   this.getVehicleDetails()
-    // },100000)
+    setInterval(()=>{
+      this.getVehicleDetails()
+    },300000)
   }
   name:string
-  el = document.createElement('img');
+  
   getVehicleDetails(){
     console.log("refresh")
-    this.el.setAttribute('src','../../../../assets/marker.png')
-    this.el.setAttribute('width',"60px")
+    
     this.vehcileService.getVehicleDetails()
     .subscribe(res =>{
       res.forEach(element =>{
-        let marker = new mapboxgl.Marker(this.el)
+        if(element.availability === "free"){
+        var el = document.createElement('img');
+        el.setAttribute('src','../../../../assets/marker.png')
+        el.setAttribute('width',"60px")
+        el.addEventListener('click',()=>{
+          this.showInfo(element)
+        })
+        var marker = new mapboxgl.Marker(el)
         .setLngLat([element.positionLng, element.positionLat])
         .addTo(this.map)
         .setPopup(new mapboxgl.Popup()
-        .setHTML("<ng-template>{{element.name}}</ng-template>"));
-        // setTimeout(()=>{
-        //   marker.remove();
-        // },100000)
+        );
+        
+        setTimeout(()=>{
+          marker.remove();
+        },300000)
+        }
       })
     })
+  }
+  showInfo(element){
+    console.log(element)
   }
 }

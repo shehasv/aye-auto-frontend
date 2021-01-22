@@ -1,1 +1,10 @@
-<p>vehicle works!</p>
+<div class="place">
+    <h5><i class="fa fa-map-marker"></i>{{place}} <button (click)="updatePosition()" class="btn btn-link">refresh</button></h5>
+</div>
+<div class="map" id="map" class="match-parent"></div>
+
+<mat-button-toggle-group appearance="legacy" #group="matButtonToggleGroup" [value]="selectedVal" (change)="onValChange(group.value)">
+    <mat-button-toggle  value="not-availabe">Not-Available</mat-button-toggle>
+    <mat-button-toggle  value="free">Free</mat-button-toggle>
+    <mat-button-toggle value="on-ride">On Ride</mat-button-toggle>
+</mat-button-toggle-group>
