@@ -1,4 +1,6 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Router } from '@angular/router';
 import * as mapboxgl from 'mapbox-gl';
 import { environment } from '../../../../environments/environment';
 import { VehicleService } from '../../services/vehicle.service';
@@ -16,7 +18,7 @@ export class HomeComponent implements OnInit {
   lat;
   lng;
   place:string;
-  constructor(private vehcileService:VehicleService) { 
+  constructor(private vehcileService:VehicleService, private router:Router) { 
     
   }
   ngOnInit() {
@@ -80,7 +82,16 @@ export class HomeComponent implements OnInit {
         },300000)
         }
       })
-    })
+    },
+    err =>{
+      if(err instanceof HttpErrorResponse){
+        if(err.status === 401){
+          sessionStorage.clear();
+          this.router.navigate([''])
+        }
+      }
+    }
+    )
   }
 
   public vehicleDetails:Vehicle;

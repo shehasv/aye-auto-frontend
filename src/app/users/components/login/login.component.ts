@@ -66,6 +66,7 @@ export class LoginComponent implements OnInit {
         }
 
         else if (response.msg === 'success'){
+          sessionStorage.setItem('token',response.token)
           sessionStorage.setItem('id',response.id)
           this.route.navigate(['/home']);
 
@@ -104,7 +105,8 @@ export class LoginComponent implements OnInit {
           }
   
           else if (response.msg === 'success'){
-            sessionStorage.setItem('id',response.id)
+            sessionStorage.setItem('token',response.token)
+            sessionStorage.setItem('vehicleId',response.id)
             this.route.navigate(['/vehicle']);
   
           }

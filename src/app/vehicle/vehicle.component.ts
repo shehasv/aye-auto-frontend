@@ -1,4 +1,6 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Router } from '@angular/router';
 import * as mapboxgl from 'mapbox-gl';
 import { environment } from '../../environments/environment';
 import { VehicleService } from '../users/services/vehicle.service';
@@ -16,7 +18,7 @@ export class VehicleComponent implements OnInit {
   public lng;
   place:string;
   public selectedVal: string;
-  constructor(private vehcileService:VehicleService) { 
+  constructor(private vehcileService:VehicleService,private router:Router) { 
     
   }
 
@@ -27,10 +29,19 @@ export class VehicleComponent implements OnInit {
 
 
   chnageStatus(){
-    this.vehcileService.updateStatus(sessionStorage.getItem('id'),this.selectedVal)
+    this.vehcileService.updateStatus(sessionStorage.getItem('vehicleId'),this.selectedVal)
     .subscribe((res)=>{
       console.log(res)
-    })
+    },
+    err =>{
+      if(err instanceof HttpErrorResponse){
+        if(err.status === 401){
+          sessionStorage.clear();
+          this.router.navigate([''])
+        }
+      }
+    }
+    )
   }
   
   ngOnInit() {
@@ -79,7 +90,7 @@ export class VehicleComponent implements OnInit {
 
   ngOnDestroy() {
     console.log('close')
-    this.vehcileService.updateStatus(sessionStorage.getItem('id'),'not-available')
+    this.vehcileService.updateStatus(sessionStorage.getItem('vehicleId'),'not-available')
     .subscribe((res)=>{
       console.log(res)
     })

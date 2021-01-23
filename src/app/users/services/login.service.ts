@@ -12,12 +12,21 @@ export class LoginService {
   vehicleurl = "https://aye-auto-shehas.herokuapp.com/vehiclelogin"
 
   login(data){
-    return this._http.post<{msg:string,id:string}>(this.customerurl,data)
+    return this._http.post<{msg:string,id:string,token:string}>(this.customerurl,data)
   }
 
 
   vehicleLogin(data){
-    return this._http.post<{msg:string,id:string}>(this.vehicleurl,data)
+    return this._http.post<{msg:string,id:string,token:string}>(this.vehicleurl,data)
   }
+
+  loggedIn(){
+    return !!sessionStorage.getItem('token')
+  }
+
+  getToken(){
+    return sessionStorage.getItem('token')
+  }
+
 
 }
