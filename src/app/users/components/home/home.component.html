@@ -28,9 +28,12 @@
             </button>
           </div>
           <div class="login-container">
-            <!-- <h3>{{vehicleDetails.name}}</h3> -->
-            <!-- <h4>{{vehicleDetails.vehicleNumber}}</h4> -->
-            <!-- <p><a href="tel:{{vehicleDetails.phone}}">Call</a></p> -->
+            <h3><i class="fa fa-user" aria-hidden="true"></i>{{vehicleDetails?.name}}</h3>
+            <h3><i class="fa fa-taxi" aria-hidden="true"></i>{{vehicleDetails?.vehicleNumber}}</h3>
+            <div>
+              <a href="tel:{{vehicleDetails?.phone}}"><i class="fa fa-phone" aria-hidden="true"></i>Call Now</a>
+            </div>
+
           </div>
           <div class="modal-footer">
               <button class="btn btn-warning" (click)="hide()">Close</button>

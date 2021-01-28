@@ -18,4 +18,26 @@
 
 .modal-dialog{
     margin-top: 50%;
+    .login-container{
+        h3{
+            margin-bottom: 2%;
+            i{
+                margin-right: 2%;
+                
+            }
+            &:hover{
+                color: #ffb532;
+            }
+        }
+        margin-left: 2%;
+        
+        a{
+            i{
+                margin-right: 2%;
+            }
+            margin: 2%;
+            font-size: x-large;
+        }
+        
+    }
 }

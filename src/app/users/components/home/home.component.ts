@@ -18,6 +18,7 @@ export class HomeComponent implements OnInit {
   lat;
   lng;
   place:string;
+  vehicleDetails;
   constructor(private vehcileService:VehicleService, private router:Router) { 
     
   }
@@ -69,7 +70,8 @@ export class HomeComponent implements OnInit {
         el.setAttribute('src','../../../../assets/marker.png')
         el.setAttribute('width',"60px")
         el.addEventListener('click',()=>{
-          this.showInfo(element)
+          this.vehicleDetails = element;
+          this.showLogin();
         })
         var marker = new mapboxgl.Marker(el)
         .setLngLat([element.positionLng, element.positionLat])
@@ -94,12 +96,9 @@ export class HomeComponent implements OnInit {
     )
   }
 
-  public vehicleDetails:Vehicle;
+  
 
-  showInfo(element){
-    this.vehicleDetails = element;
-    this.showLogin();
-  }
+ 
 
 
   refresh(){
@@ -111,6 +110,7 @@ export class HomeComponent implements OnInit {
 
   showLogin() {
     this.showModal = true;
+    // console.log(this.vehicleDetails)
   }
 
   hide() {
