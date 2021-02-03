@@ -1,0 +1,20 @@
+.container{
+    position: absolute;
+    width: 100vw;
+    height: 70px;
+    background-color: #ffb532;
+    bottom: 0px;
+    display: flex;
+    div{
+        h2{
+            color: white;
+        }
+        margin-top: 5%;
+        width: 25%;
+        text-align: center;
+    }
+}
+
+.active{
+    color: black;
+}

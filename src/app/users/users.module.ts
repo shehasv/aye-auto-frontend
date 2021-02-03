@@ -9,9 +9,13 @@ import {ReactiveFormsModule} from '@angular/forms'
 import {HttpClientModule} from '@angular/common/http';
 import { SignupComponent } from './components/signup/signup.component'
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import { FooterComponent } from './components/footer/footer.component';
+import { ListComponent } from './components/list/list.component';
+import { FreeVehiclesPipe } from './pipes/free-vehicles.pipe';
+import { RideVehiclesPipe } from './pipes/ride-vehicles.pipe';
 
 @NgModule({
-  declarations: [UsersComponent, LoginComponent, HomeComponent, SignupComponent],
+  declarations: [UsersComponent, LoginComponent, HomeComponent, SignupComponent, FooterComponent, ListComponent, FreeVehiclesPipe, RideVehiclesPipe],
   imports: [
     CommonModule,
     UsersRoutingModule,

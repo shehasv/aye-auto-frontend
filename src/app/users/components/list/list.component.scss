@@ -1,0 +1,44 @@
+
+h2{
+    margin-top: 2%;
+    margin-left: 1%;
+}
+.btn-group{
+    margin-left: 1%;
+    margin-bottom: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    button{
+        margin-right: 2%;
+    }
+}
+
+.vehicleContainer{
+    div{
+        background-color: rgb(240, 240, 240);
+        padding: 2%;
+        margin-top: 1%;
+    }
+        .vehicle{
+            display: flex;
+            flex-direction: row;
+            .details{
+                width: 70%;
+                h4{
+                    i{
+                        margin-right: 2%;
+                    }
+                }
+            }
+            .status{
+                width: 30%;
+                
+                button{
+                    a{
+                        color: white;
+                    }
+                }
+            }
+        }
+}

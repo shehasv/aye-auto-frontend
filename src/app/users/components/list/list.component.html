@@ -1,0 +1,58 @@
+
+<h2>Nearby Autos</h2>
+
+<div class="btn-group" role="group" aria-label="Basic example">
+    <button type="button" class="btn btn-secondary" (click)="statusToAll()">All</button>
+    <button type="button" class="btn btn-secondary" (click)="statusToFree()">Free</button>
+    <button type="button" class="btn btn-secondary" (click)="statusToRide()">On-Ride</button>
+</div>
+
+<span [ngSwitch]="filterStatus">
+<div *ngSwitchCase="'all'">
+    <div *ngFor="let vehicle of vehicleDetails" class="vehicleContainer">
+        <div class="vehicle">
+            <div class="details">
+                <i class="fa fa-user" aria-hidden="true"></i><h4>{{vehicle.name}}</h4>
+                <i class="fa fa-taxi" aria-hidden="true"></i><h4>{{vehicle.vehicleNumber}}</h4>
+            </div>
+            <div class="status">
+                <button class="btn btn-primary"><a href="tel:{{vehicle.phone}}"><i class="fa fa-phone" aria-hidden="true"></i>Call Now</a></button>
+                
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngSwitchCase="'free'">
+    <div *ngFor="let vehicle of vehicleDetails | freeVehicles" class="vehicleContainer">
+        <div class="vehicle">
+            <div class="details">
+                <i class="fa fa-user" aria-hidden="true"></i><h4>{{vehicle.name}}</h4>
+                <i class="fa fa-taxi" aria-hidden="true"></i><h4>{{vehicle.vehicleNumber}}</h4>
+            </div>
+            <div class="status">
+                <button class="btn btn-primary"><a href="tel:{{vehicle.phone}}"><i class="fa fa-phone" aria-hidden="true"></i>Call Now</a></button>
+                
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngSwitchCase="'on-ride'">
+    <div *ngFor="let vehicle of vehicleDetails | rideVehicles" class="vehicleContainer">
+        <div class="vehicle">
+            <div class="details">
+                <i class="fa fa-user" aria-hidden="true"></i><h4>{{vehicle.name}}</h4>
+                <i class="fa fa-taxi" aria-hidden="true"></i><h4>{{vehicle.vehicleNumber}}</h4>
+            </div>
+            <div class="status">
+                <button class="btn btn-primary"><a href="tel:{{vehicle.phone}}"><i class="fa fa-phone" aria-hidden="true"></i>Call Now</a></button>
+                
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngSwitchDefault>
+
+</div>
+</span>
+
+<app-footer></app-footer>
