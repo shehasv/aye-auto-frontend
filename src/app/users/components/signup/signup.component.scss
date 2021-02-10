@@ -1,0 +1,24 @@
+.form-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    h3{
+        margin-bottom: 5%;
+    }
+    form{
+        width: 75%;
+    }
+    span{
+        color: red;
+    }
+    .progress{
+        width: 75%;
+        height: 35px;
+        margin-bottom: 8%;
+        h6{
+            margin-top: 2%;
+        }
+    }
+}

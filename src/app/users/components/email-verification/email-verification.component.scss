@@ -1,0 +1,22 @@
+.form-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    h3{
+        margin-bottom: 2%;
+    }
+    h5{
+        margin-bottom: 8%;
+        color: rgb(163, 159, 159);
+    }
+    button{
+        font-size: x-large;
+        font-weight: bold;
+    }
+    .ok{
+        margin-top: 5%;
+        color: black;
+        font-weight: lighter;
+    }
+}

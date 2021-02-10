@@ -13,9 +13,10 @@ import { FooterComponent } from './components/footer/footer.component';
 import { ListComponent } from './components/list/list.component';
 import { FreeVehiclesPipe } from './pipes/free-vehicles.pipe';
 import { RideVehiclesPipe } from './pipes/ride-vehicles.pipe';
+import { EmailVerificationComponent } from './components/email-verification/email-verification.component';
 
 @NgModule({
-  declarations: [UsersComponent, LoginComponent, HomeComponent, SignupComponent, FooterComponent, ListComponent, FreeVehiclesPipe, RideVehiclesPipe],
+  declarations: [UsersComponent, LoginComponent, HomeComponent, SignupComponent, FooterComponent, ListComponent, FreeVehiclesPipe, RideVehiclesPipe, EmailVerificationComponent],
   imports: [
     CommonModule,
     UsersRoutingModule,

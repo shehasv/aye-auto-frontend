@@ -1,1 +1,44 @@
-<p>signup works!</p>
+<div class="form-container">
+    <h3>create an account</h3>
+    <div class="progress">
+        <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60"
+        aria-valuemin="0" aria-valuemax="100" style="width:80%">
+          <h6>80% completed </h6>
+        </div>
+    </div>
+    <form [formGroup]="signupForm" (ngSubmit)="signup()">
+        <div class="form-group" >
+            <h6>Name <span>*</span></h6>
+            <input [class.is-invalid]="name.invalid && name.touched"  type="text" class="form-control" formControlName="name">
+            <div *ngIf="name.invalid && name.touched">
+                <small *ngIf="name.errors?.required" class="text-danger">Name is required</small>
+            </div>
+        </div>
+        <div class="form-group" >
+            <h6>Phone Number <span>*</span></h6>
+            <input [class.is-invalid]="phone.invalid && phone.touched"  type="text" class="form-control" formControlName="phone">
+            <div *ngIf="phone.invalid && phone.touched">
+                <small *ngIf="phone.errors?.required" class="text-danger">Phone number is required</small>
+                <small *ngIf="phone.errors?.min || phone.errors?.max" class="text-danger">Invalid phone number</small>
+            </div>
+        </div>
+        <div class="form-group" >
+            <h6>Password <span>*</span></h6>
+            <input [class.is-invalid]="password.invalid && password.touched"  type="password" class="form-control" formControlName="password">
+            <div *ngIf="password.invalid && password.touched">
+                <small *ngIf="password.errors?.required" class="text-danger">Password is required</small>
+                <small *ngIf="password.errors?.minlength" class="text-danger">Password should contain atleast 8 characters</small>
+            </div>
+        </div>
+        <div class="form-group" >
+            <h6>Confirm Password <span>*</span></h6>
+            <input [class.is-invalid]="confirmPassword.invalid && confirmPassword.touched"  type="password" class="form-control" formControlName="confirmPassword">
+            <div *ngIf="confirmPassword.invalid && confirmPassword.touched">
+                <small *ngIf="confirmPassword.errors?.required" class="text-danger">Password is required</small>
+                <small *ngIf="confirmPassword.errors?.confirmedValidator" class="text-danger">password mismatch</small>
+            </div>
+        </div>
+        <button [disabled]="!signupForm.valid"   class="btn btn-warning lg-btn btn-block">Register</button>
+    </form>
+</div>
+    

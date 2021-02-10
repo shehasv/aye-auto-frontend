@@ -11,6 +11,7 @@ import { environment } from '../environments/environment';
 import { AuthGuard } from './auth.guard';
 import { AuthStateGuard } from './auth-state.guard';
 import { TokenInterceptorService } from './token-interceptor.service';
+import { ToastrModule } from 'ngx-toastr';
 @NgModule({
   declarations: [
     AppComponent
@@ -22,6 +23,7 @@ import { TokenInterceptorService } from './token-interceptor.service';
     HttpClientModule,
     BrowserAnimationsModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+    ToastrModule.forRoot(),
   ],
   providers: [AuthGuard,AuthStateGuard, 
   {

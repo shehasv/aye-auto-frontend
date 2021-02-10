@@ -1,0 +1,25 @@
+<div class="form-container">
+    <form [formGroup]="emailForm" (ngSubmit)="emailVerify()">
+        <div class="form-group" >
+            <h3><b>Welcome to Aye-Auto</b></h3>
+            <h5>Sign in or create a new account for free.</h5>
+            <h6>Email</h6>
+            <input [class.is-invalid]="email.invalid && email.touched" placeholder="someone@example.com" type="text" class="form-control" formControlName="email">
+            <div *ngIf="email.invalid && email.touched">
+                <small *ngIf="email.errors?.required" class="text-danger">Email is required</small>
+                <small *ngIf="email.errors?.email" class="text-danger">Enter valid email id</small>
+            </div>
+        </div>
+        <button [disabled]="!emailForm.valid" *ngIf="!clciked"  class="btn btn-warning lg-btn btn-block">Sign in</button>
+        <button *ngIf="clciked" class="btn btn-warning lg-btn btn-block">
+            <div class="spinner-border spinner-border-sm" role="status">
+                <span class="sr-only">Loading...</span>
+              </div>
+        </button>
+        <h5 *ngIf="done" class="ok">An activation link has been sent to <b>{{mail}}</b>. <br> please verify your email address</h5>
+        <div *ngIf="error" class="alert alert-warning" role="alert">
+            <strong>Error Occured!</strong> Please try again later.
+        </div>
+    </form>
+</div>
+    
