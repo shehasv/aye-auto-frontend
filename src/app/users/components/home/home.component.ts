@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import * as mapboxgl from 'mapbox-gl';
 import { environment } from '../../../../environments/environment';
 import { VehicleService } from '../../services/vehicle.service';
-import { Vehicle } from '../../vehicle';
 
 @Component({
   selector: 'app-home',
@@ -19,6 +18,7 @@ export class HomeComponent implements OnInit {
   lng;
   place:string;
   vehicleDetails;
+  
   constructor(private vehcileService:VehicleService, private router:Router) { 
     
   }
@@ -53,14 +53,10 @@ export class HomeComponent implements OnInit {
 
     }
     this.getVehicleDetails();
-    setInterval(()=>{
-      this.getVehicleDetails()
-    },300000)
   }
   name:string
   
   getVehicleDetails(){
-    console.log("refresh")
     
     this.vehcileService.getVehicleDetails()
     .subscribe(res =>{
@@ -81,7 +77,7 @@ export class HomeComponent implements OnInit {
         
         setTimeout(()=>{
           marker.remove();
-        },300000)
+        },10000)
         }
       })
     },

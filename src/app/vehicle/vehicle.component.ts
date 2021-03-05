@@ -80,7 +80,7 @@ export class VehicleComponent implements OnInit {
     setInterval(()=>{
       console.log('retry')
       this.updatePosition()
-    },300000)
+    },100000)
 
   }
 
