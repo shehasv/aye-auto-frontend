@@ -14,9 +14,10 @@ import { ListComponent } from './components/list/list.component';
 import { FreeVehiclesPipe } from './pipes/free-vehicles.pipe';
 import { RideVehiclesPipe } from './pipes/ride-vehicles.pipe';
 import { EmailVerificationComponent } from './components/email-verification/email-verification.component';
+import { FareCalculationComponent } from './components/fare-calculation/fare-calculation.component';
 
 @NgModule({
-  declarations: [UsersComponent, LoginComponent, HomeComponent, SignupComponent, FooterComponent, ListComponent, FreeVehiclesPipe, RideVehiclesPipe, EmailVerificationComponent],
+  declarations: [UsersComponent, LoginComponent, HomeComponent, SignupComponent, FooterComponent, ListComponent, FreeVehiclesPipe, RideVehiclesPipe, EmailVerificationComponent, FareCalculationComponent],
   imports: [
     CommonModule,
     UsersRoutingModule,
