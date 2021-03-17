@@ -80,7 +80,7 @@ export class FareCalculationComponent implements OnInit {
               navigator.geolocation.getCurrentPosition((position)=>{
                 var lat = position.coords.latitude;
                 var lng = position.coords.longitude;
-                map.getSource('single-point').setData(e.result.geometry);
+                // map.getSource('single-point').setData(e.result.geometry);
 
 
                 var from = turf.point([lng, lat]);
