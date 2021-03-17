@@ -1,7 +1,19 @@
-<h2>Fare-Calculation</h2>
+<h3>Fare-Calculation</h3>
 
 <div id="map"></div>
 
-<h3 id="distance"></h3>
 
+<div class="alert alert-warning" id="error-route" role="alert">
+    <strong>No routes found!</strong> try another one.
+</div>
+
+<div id="display" class="display-info">
+    <div class="distance">
+        <h4><i class="fa fa-map-marker" routerLink="/home" routerLinkActive="active" aria-hidden="true"></i></h4>
+        <h5 id="distance"></h5>
+    </div>
+    <div class="fare">
+        <h4><i class="fa fa-inr" routerLink="/home" routerLinkActive="active" aria-hidden="true"></i></h4>
+    </div>
+</div>
 <app-footer></app-footer>

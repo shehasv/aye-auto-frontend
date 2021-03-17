@@ -83,12 +83,30 @@ export class FareCalculationComponent implements OnInit {
                 // map.getSource('single-point').setData(e.result.geometry);
 
 
-                var from = turf.point([lng, lat]);
-                var to = turf.point([searchResult.coordinates[0],searchResult.coordinates[1]]);
+                
 
-                var distance = turf.distance(from, to, {units: 'kilometers'}).toString().split('.')[0];
 
-                document.getElementById('distance').innerHTML = 'Distance : '+distance + 'Km';
+                fetch("https://api.mapbox.com/directions-matrix/v1/mapbox/driving/"+lng+","+lat+";"+searchResult.coordinates[0]+","+searchResult.coordinates[1]+"?sources=0&destinations=1&annotations=distance,duration&access_token="+environment.mapbox.accessToken)
+                .then(response => response.json())
+                .then(data => {
+                  // console.log(data)
+                  if(data.code === "Ok"){
+                    let distance = data.distances[0] / 1000;
+                    document.getElementById('distance').innerHTML = 'Distance : '+distance + ' Km';
+                    document.getElementById('display').style.display = "flex"
+                  }
+                  else{
+                    document.getElementById('error-route').style.display = "block";
+                    setTimeout(()=>{
+                      document.getElementById('error-route').style.display = "none"; 
+                    },5000)
+                  }
+                })
+
+
+                // var distance = turf.distance(from, to, {units: 'kilometers'}).toString().split('.')[0];
+
+                
 
               })
               });
